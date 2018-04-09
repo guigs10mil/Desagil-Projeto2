@@ -4,6 +4,8 @@ public class AndGate extends Gate {
 	private NandGate[] nandGates;
 
 	public AndGate() {
+		super("And", 2);
+		
 		nandGates = new NandGate[2];
 		
 		for (int i = 0; i < nandGates.length; i++) {

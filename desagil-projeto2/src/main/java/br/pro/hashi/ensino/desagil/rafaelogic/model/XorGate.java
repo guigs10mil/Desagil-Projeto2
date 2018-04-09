@@ -4,6 +4,8 @@ public class XorGate extends Gate {
 	private NandGate[] nandGates;
 
 	public XorGate() {
+		super("Xor", 2);
+		
 		nandGates = new NandGate[4];
 		
 		for (int i = 0; i < nandGates.length; i++) {

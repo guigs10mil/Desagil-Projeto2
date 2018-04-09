@@ -4,6 +4,8 @@ public class NotGate extends Gate {
 	private NandGate[] nandGates;
 
 	public NotGate() {
+		super("Not", 1);
+		
 		nandGates = new NandGate[1];
 		
 		for (int i = 0; i < nandGates.length; i++) {

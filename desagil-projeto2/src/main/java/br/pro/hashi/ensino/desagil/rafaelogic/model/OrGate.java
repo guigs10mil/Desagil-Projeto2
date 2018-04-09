@@ -5,6 +5,8 @@ public class OrGate extends Gate {
 	private NotGate[] notGates;
 
 	public OrGate() {
+		super("Or", 2);
+		
 		nandGates = new NandGate[1];
 		notGates = new NotGate[2];
 		
