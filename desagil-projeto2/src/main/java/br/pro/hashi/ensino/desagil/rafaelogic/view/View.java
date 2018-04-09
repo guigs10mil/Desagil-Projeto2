@@ -23,8 +23,8 @@ public class View extends JPanel implements ActionListener {
 	private static final long serialVersionUID = 1L;
 
 
-	// As duas componentes do painel principal:
-	// o menu e o subpainel de uma calculadora.
+	// Os dois componentes do painel principal:
+	// o menu e o subpainel de entradas e saídas.
 	private JComboBox<Gate> menu;
 	private GateView gateView;
 
@@ -35,7 +35,7 @@ public class View extends JPanel implements ActionListener {
 		// https://docs.oracle.com/javase/tutorial/uiswing/components/combobox.html.
 		menu = new JComboBox<>();
 
-		// Os itens do menu são instâncias de Calculator. O texto exibido para cada
+		// Os itens do menu são instâncias de Gate. O texto exibido para cada
 		// item é a String devolvida pelo método toString, por isso demos esse nome.
 		for(Gate gate: model) {
 			menu.addItem(gate);
@@ -49,7 +49,7 @@ public class View extends JPanel implements ActionListener {
 		// Adiciona o menu a este painel.
 		add(menu);
 
-		// Adiciona o subpainel da primeira calculadora a este painel.
+		// Adiciona o subpainel da primeira porta lógica a este painel.
 		addGateView(0);
 
 		// Estabelece que este painel reage a mudanças no menu.
@@ -59,7 +59,7 @@ public class View extends JPanel implements ActionListener {
 	}
 
 
-	// Adiciona o subpainel de uma calculadora a este painel.
+	// Adiciona o subpainel de uma porta lógica a este painel.
 	private void addGateView(int index) {
 		Gate gate = menu.getItemAt(index);
 		gateView = new GateView(gate);
@@ -68,8 +68,8 @@ public class View extends JPanel implements ActionListener {
 
 
 	// Método exigido pela interface ActionListener, que representa a reação a uma
-	// mudança no menu: remover o subpainel de calculadora que está atualmente neste
-	// painel e adicionar o subpainel correspondente à calculadora selecionada no menu.
+	// mudança no menu: remover o subpainel da porta lógica que está atualmente neste
+	// painel e adicionar o subpainel correspondente à porta lógica selecionada no menu.
 	@Override
 	public void actionPerformed(ActionEvent event) {
 		remove(gateView);

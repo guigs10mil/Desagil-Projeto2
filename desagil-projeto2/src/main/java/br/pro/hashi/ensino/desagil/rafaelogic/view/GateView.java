@@ -12,7 +12,6 @@ import br.pro.hashi.ensino.desagil.rafaelogic.model.*;
 
 // A classe JPanel representa um painel da interface gráfica,
 // onde você pode adicionar componentes como menus e botões.
-// Esta em particular representa o subpainel de uma calculadora.
 // A interface ActionListener é explicada melhor mais abaixo.
 public class GateView extends JPanel implements ActionListener {
 
@@ -22,9 +21,6 @@ public class GateView extends JPanel implements ActionListener {
 
 
 	private Gate gate;
-
-	// A classe JTextField representa um componente usado para digitação de texto.
-	// https://docs.oracle.com/javase/tutorial/uiswing/components/textfield.html
 	
 	private JCheckBox[] inputs;
 	private JCheckBox outputBox;
@@ -44,7 +40,7 @@ public class GateView extends JPanel implements ActionListener {
 		// A classe JLabel representa um componente que é simplesmente texto fixo.
 		// https://docs.oracle.com/javase/tutorial/uiswing/components/label.html
 		JLabel inputLabel = new JLabel("Entrada:");
-		JLabel outputLabel = new JLabel("Saida:");
+		JLabel outputLabel = new JLabel("Saída:");
 
 		// Todo painel precisa de um layout, que estabelece como os componentes
 		// são organizados dentro dele. O layout escolhido na linha abaixo é o
@@ -59,27 +55,27 @@ public class GateView extends JPanel implements ActionListener {
 		add(outputLabel);
 		add(outputBox);
 
-		// Estabelece que este subpainel reage ao usuário digitar nos dois
-		// primeiros campos. Isso só pode ser feito se este subpainel for
+		// Estabelece que este subpainel reage ao usuário ativar as
+		// caixas de seleção. Isso só pode ser feito se este subpainel for
 		// do tipo ActionListener, por isso ele implementa essa interface.
 		for (int i = 0; i < inputs.length; i++) {
 			inputs[i].addActionListener(this);
 		}
 		
 
-		// Estabelece que o terceiro campo está desativado, não é digitável.
+		// Estabelece que a ultíma caixa de seleção está desativada.
 		outputBox.setEnabled(false);
 
 		// Não podemos esquecer de chamar update na inicialização,
 		// caso contrário a interface só ficará consistente depois
-		// da primeira interação do usuário com os campos de texto.
+		// da primeira interação do usuário com as caixas de seleção.
 		// A definição exata do método update é dada logo abaixo.
 		update();
 	}
 
 
-	// Método que lê o peso e o raio dos primeiros campos,
-	// calcula a densidade e a escreve no terceiro campo.
+	// Método que liga as entradas dadas com a lógica das portas e
+	// devolve o resultado.
 	private void update() {
 		Source[] sources = new Source[gate.getSize()];
 		
@@ -109,7 +105,7 @@ public class GateView extends JPanel implements ActionListener {
 
 
 	// Método exigido pela interface ActionListener, que representa
-	// a reação a uma digitação do usuário nos dois primeiros campos.
+	// a reação a qualquer interação do usuário no painel.
 	@Override
 	public void actionPerformed(ActionEvent event) {
 		update();
